@@ -14,6 +14,8 @@
 #define __GVUSB2_H__
 
 #include <linux/module.h>
+#include <linux/slab.h>
+#include <linux/usb.h>
 
 #define GVUSB2_NUM_URBS 4
 #define GVUSB2_NUM_ISOCH_PACKETS 0x100
@@ -34,6 +36,24 @@ int gvusb2_write_reg(struct gvusb2_dev *dev, u16 reg, u8 value);
 int gvusb2_set_reg_mask(struct gvusb2_dev *dev, u16 reg, u8 mask, u8 value);
 int gvusb2_init(struct gvusb2_dev *dev, struct usb_device *udev);
 int gvusb2_free(struct gvusb2_dev *dev);
+
+struct gvusb2_snd {
+	struct gvusb2_dev gv;
+	struct usb_interface *intf;
+	struct usb_endpoint_descriptor *ep;
+
+	/* urb */
+	struct urb *urbs[GVUSB2_NUM_URBS];
+
+	/* alsa */
+	struct snd_card *card;
+	struct snd_pcm *pcm;
+	struct snd_pcm_substream *substream;
+	int dma_offset;
+	int avail;
+	int hw_ptr;
+	spinlock_t lock;
+};
 
 void gvusb2_snd_process_pcm(struct gvusb2_snd *dev, unsigned char *buf, unsigned int len);
 int gvusb2_snd_alsa_init(struct gvusb2_snd *dev);

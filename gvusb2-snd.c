@@ -42,24 +42,6 @@ static const struct usb_device_id gvusb2_id_table[] = {
 };
 MODULE_DEVICE_TABLE(usb, gvusb2_id_table);
 
-struct gvusb2_snd {
-	struct gvusb2_dev gv;
-	struct usb_interface *intf;
-	struct usb_endpoint_descriptor *ep;
-
-	/* urb */
-	struct urb *urbs[GVUSB2_NUM_URBS];
-
-	/* alsa */
-	struct snd_card *card;
-	struct snd_pcm *pcm;
-	struct snd_pcm_substream *substream;
-	int dma_offset;
-	int avail;
-	int hw_ptr;
-	spinlock_t lock;
-};
-
 static struct snd_pcm_hardware gvusb2_snd_hw = {
 	.info = (SNDRV_PCM_INFO_MMAP |
 		SNDRV_PCM_INFO_INTERLEAVED |
