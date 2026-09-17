@@ -17,10 +17,6 @@
 #include "gvusb2.h"
 #include "gvusb2-vid.h"
 
-int gvusb2_i2c_read_reg(struct gvusb2_vid *dev, u8 addr, u8 reg, u8 *value);
-int gvusb2_i2c_write_reg(struct gvusb2_vid *dev, u8 addr, u8 reg, u8 value);
-void gvusb2_vid_free_urbs(struct gvusb2_vid *dev);
-
 static int gvusb2_i2c_busy_wait(struct gvusb2_vid *dev, u8 wait_mask)
 {
 	int attempts;
