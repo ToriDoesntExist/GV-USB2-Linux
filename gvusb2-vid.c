@@ -33,6 +33,7 @@ int gvusb2_vid_probe(struct usb_interface *intf, const struct usb_device_id *id)
 void gvusb2_vid_disconnect(struct usb_interface *intf);
 int gvusb2_i2c_read_reg(struct gvusb2_vid *dev, u8 addr, u8 reg, u8 *value);
 int gvusb2_i2c_write_reg(struct gvusb2_vid *dev, u8 addr, u8 reg, u8 value);
+void gvusb2_vid_free_urbs(struct gvusb2_vid *dev);
 
 /*****************************************************************************
  * Data Processing Functions
