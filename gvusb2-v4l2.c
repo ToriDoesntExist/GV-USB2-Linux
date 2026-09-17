@@ -21,7 +21,7 @@
 #include <media/videobuf2-vmalloc.h>
 #include <media/i2c/tw9910.h>
 
-#include <string> // strncpy
+#include <string.h> // strncpy
 
 #include "gvusb2-vid.h"
 

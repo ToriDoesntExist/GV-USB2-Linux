@@ -42,6 +42,8 @@ static const struct usb_device_id gvusb2_id_table[] = {
 };
 MODULE_DEVICE_TABLE(usb, gvusb2_id_table);
 
+void gvusb2_snd_disconnect(struct usb_interface *intf);
+
 struct gvusb2_snd {
 	struct gvusb2_dev gv;
 	struct usb_interface *intf;
