@@ -27,6 +27,13 @@ static const struct usb_device_id gvusb2_id_table[] = {
 };
 MODULE_DEVICE_TABLE(usb, gvusb2_id_table);
 
+int gvusb2_vid_allocate_urbs(struct gvusb2_vid *dev);
+int gvusb2_vid_free(struct gvusb2_vid *dev);
+int gvusb2_vid_probe(struct usb_interface *intf, const struct usb_device_id *id);
+void gvusb2_vid_disconnect(struct usb_interface *intf);
+int gvusb2_i2c_read_reg(struct gvusb2_vid *dev, u8 addr, u8 reg, u8 *value);
+int gvusb2_i2c_write_reg(struct gvusb2_vid *dev, u8 addr, u8 reg, u8 value);
+
 /*****************************************************************************
  * Data Processing Functions
  ****************************************************************************/
