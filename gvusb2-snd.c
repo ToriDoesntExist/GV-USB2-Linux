@@ -293,7 +293,7 @@ static void gvusb2_snd_alsa_free(struct gvusb2_snd *dev)
  ****************************************************************************/
 
 /* Do not call in atomic contexts */
-void gvusb2_snd_cancel_isoc(struct gvusb2_snd *dev)
+static void gvusb2_snd_cancel_isoc(struct gvusb2_snd *dev)
 {
 	int i;
 

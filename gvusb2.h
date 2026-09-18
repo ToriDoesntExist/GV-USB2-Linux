@@ -36,6 +36,7 @@ int gvusb2_write_reg(struct gvusb2_dev *dev, u16 reg, u8 value);
 int gvusb2_set_reg_mask(struct gvusb2_dev *dev, u16 reg, u8 mask, u8 value);
 int gvusb2_init(struct gvusb2_dev *dev, struct usb_device *udev);
 int gvusb2_free(struct gvusb2_dev *dev);
+int gvusb2_snd_reset_adc(struct gvusb2_dev *dev);
 
 struct gvusb2_snd {
 	struct gvusb2_dev gv;
@@ -57,7 +58,7 @@ struct gvusb2_snd {
 
 void gvusb2_snd_process_pcm(struct gvusb2_snd *dev, unsigned char *buf, unsigned int len);
 int gvusb2_snd_alsa_init(struct gvusb2_snd *dev);
-void gvusb2_snd_cancel_isoc(struct gvusb2_snd *dev);
+//void gvusb2_snd_cancel_isoc(struct gvusb2_snd *dev);
 void gvusb2_snd_free_isoc(struct gvusb2_snd *dev);
 void gvusb2_snd_process_isoc(struct gvusb2_snd *dev, struct urb *urb);
 int gvusb2_snd_probe(struct usb_interface *intf, const struct usb_device_id *id);
